@@ -58,7 +58,7 @@ function AppProvider({ children }) {
 
         try {
             const { data } = await axiosClient.post('/links', uploadData, getConfig());
-            const link = `${process.env.WEB_URL}/download/${data.url}`;
+            const link = `${process.env.NEXT_PUBLIC_WEB_URL}/download/${data.url}`;
             setDownloadLink(link);
             sessionStorage.setItem('link', link);
             router.push('/share');
@@ -108,7 +108,7 @@ function AppProvider({ children }) {
     }
 
     const downloadFile = () => {
-        router.push(`${process.env.API_URL}/api/files/${currentFile.name}`)
+        router.push(`${process.env.NEXT_PUBLIC_API_URL}/api/files/${currentFile.name}`)
         const updatedFile = { ...currentFile };
         updatedFile.isDownloaded = true;
         setCurrentFile(updatedFile);

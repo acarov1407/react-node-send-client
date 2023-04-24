@@ -8,7 +8,7 @@ function LinkCard({ link }) {
   const { real_name, limit, url } = link;
   const { deleteLink } = useApp();
 
-  const linkURL = `${process.env.WEB_URL}/download/${url}`;
+  const linkURL = `${process.env.NEXT_PUBLIC_WEB_URL}/download/${url}`;
 
   
   return (

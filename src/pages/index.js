@@ -14,7 +14,6 @@ function Home() {
   const { isAuth } = useAuth();
   const { alert } = useApp();
 
-
   return (
 
     <Layout>
