@@ -1,8 +1,7 @@
 import Layout from "@/components/Layout"
-import { axiosClient, getConfig } from "@/config/axiosClient"
+import { axiosClient  } from "@/config/axiosClient"
 import Link from "next/link"
 import useApp from "@/context/app/useApp";
-import useAuth from "@/context/auth/useAuth";
 import FormPassword from "@/components/forms/FormPassword";
 import { useEffect } from "react";
 
@@ -42,10 +41,8 @@ export async function getServerSideProps({ params: { url } }) {
 function Url({ fileName, isProtected, url }) {
 
     const { currentFile, setCurrentFile, downloadFile } = useApp();
-    const { authUser } = useAuth();
 
     useEffect(() => {
-        authUser();
         const updatedFile = { ...currentFile };
         updatedFile.name = fileName;
         updatedFile.url = url;
