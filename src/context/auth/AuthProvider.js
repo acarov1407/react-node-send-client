@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from 'react'
 import { axiosClient } from "@/config/axiosClient";
 import { useRouter } from "next/router";
 import { showDialogOption } from "@/helpers/dialog";
-import { deleteCookies } from "@/helpers/cookie";
 
 
 const AuthContext = createContext();
@@ -45,7 +44,6 @@ function AuthProvider({ children }) {
     }
 
     const authUser = async () => {
-
         try {
             const { data } = await axiosClient.get('/auth');
             if (!data) return;
