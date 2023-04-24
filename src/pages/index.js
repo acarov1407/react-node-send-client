@@ -15,7 +15,6 @@ function Home() {
   const { alert } = useApp();
 
   return (
-
     <Layout>
       {alert.msg &&
         <div className="md:w-4/5 xl:w-2/4 mx-auto mb-2">
