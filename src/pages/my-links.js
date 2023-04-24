@@ -10,7 +10,7 @@ import { useEffect } from "react";
 export async function getServerSideProps({ req }) {
     try {
         console.log('Data', req.headers.cookie)
-        const { data } = await axiosClient('/links/user', { headers: { Cookie: req.headers.cookie } });
+        const { data } = await axiosClient('/links/user', { headers: { Cookie: req.headers.cookie, Origin: process.env.NEXT_PUBLIC_WEB_URL } });
         
         return {
             props: {
@@ -19,17 +19,29 @@ export async function getServerSideProps({ req }) {
         }
     } catch (error) {
         return {
+            props: {
+                error
+            }
+        }
+        return {
             notFound: true
         }
     }
 }
 
-function MyLinks({ links }) {
+function MyLinks({ links, error }) {
 
     const { myLinks, setMyLinks } = useApp();
 
+    const test = async () => {
+        const { data } = await axiosClient('/links/user');
+        console.log(data)
+    }
+
     useEffect(() => {
-        setMyLinks(links);
+        test()
+        console.log(error)
+        //setMyLinks(links);
     }, []);
 
     return (
