@@ -9,7 +9,9 @@ import { useEffect } from "react";
 
 export async function getServerSideProps({ req }) {
     try {
+        console.log('Data', req.headers.cookie)
         const { data } = await axiosClient('/links/user', { headers: { Cookie: req.headers.cookie } });
+        
         return {
             props: {
                 links: data.links
