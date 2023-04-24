@@ -4,48 +4,42 @@ import { FolderIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import LinkCard from "@/components/LinkCard";
 import useApp from "@/context/app/useApp";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
-export async function getServerSideProps({ req }) {
-    try {
-        console.log('Data', req.headers.cookie)
-        const { data } = await axiosClient('/links/user', { headers: { Cookie: req.headers.cookie, Origin: process.env.NEXT_PUBLIC_WEB_URL } });
+// export async function getServerSideProps({ req }) {
+//     try {
+//         const { data } = await axiosClient('/links/user', { headers: { Cookie: req.headers.cookie } });
         
-        return {
-            props: {
-                links: data.links
-            }
-        }
-    } catch (error) {
-        return {
-            props: {
-                error
-            }
-        }
-        return {
-            notFound: true
-        }
-    }
-}
+//         return {
+//             props: {
+//                 links: data.links
+//             }
+//         }
+//     } catch (error) {
+//         return {
+//             notFound: true
+//         }
+//     }
+// }
 
-function MyLinks({ links, error }) {
+function MyLinks({ links }) {
 
-    const { myLinks, setMyLinks } = useApp();
+    const { myLinks, setMyLinks, getAllLinks } = useApp();
+    const [loading, setLoading] = useState(true);
 
-    const test = async () => {
-        const { data } = await axiosClient('/links/user');
-        console.log(data)
+    const handleLoad = async () => {
+        await getAllLinks();
+        setLoading(false);
     }
 
     useEffect(() => {
-        test()
-        console.log(error)
+        handleLoad();
         //setMyLinks(links);
     }, []);
 
     return (
-        <Layout>
+        <Layout loading={loading}>
             {
                 myLinks?.length > 0
                     ?

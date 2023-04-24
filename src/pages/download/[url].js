@@ -9,7 +9,7 @@ import { useEffect } from "react";
 export async function getServerSideProps({ params: { url } }) {
 
     try {
-        const { data } = await axiosClient(`/links/link/${url}`, { headers: { Origin: process.env.NEXT_PUBLIC_WEB_URL } });
+        const { data } = await axiosClient(`/links/link/${url}`);
 
         return {
             props: {

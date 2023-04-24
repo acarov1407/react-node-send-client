@@ -53,6 +53,18 @@ function AppProvider({ children }) {
         }
     }
 
+    //TODO: REMOVE FUNCTION WHEN FIND SOLUTION TO Cookie in getServerSideProps
+    const getAllLinks = async () => {
+        router.prefetch('/');
+        try{
+            const { data } = await axiosClient('/links/user');
+            setMyLinks(data.links);
+        }catch(error){
+            router.push('/');
+        }
+        
+    }
+
 
     const createLink = async (uploadData) => {
 
@@ -66,7 +78,6 @@ function AppProvider({ children }) {
         } catch (error) {
             handleAlert({ error: true, msg: error.response.data.msg || 'Ha ocurrido un error' })
         }
-
     }
 
     const deleteLink = async (url) => {
@@ -141,6 +152,7 @@ function AppProvider({ children }) {
                 currentFile,
                 setCurrentFile,
                 downloadFile,
+                getAllLinks
             }}
         >
             {children}
