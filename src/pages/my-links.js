@@ -8,7 +8,6 @@ import { useEffect } from "react";
 
 
 export async function getServerSideProps({ req }) {
-
     try {
         const { data } = await axiosClient('/links/user', { headers: { Cookie: req.headers.cookie } });
         return {
@@ -21,7 +20,6 @@ export async function getServerSideProps({ req }) {
             notFound: true
         }
     }
-
 }
 
 function MyLinks({ links }) {
