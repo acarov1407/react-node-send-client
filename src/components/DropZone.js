@@ -27,7 +27,6 @@ function Dropzone() {
                         </div>
                     )
             }
-
         </div >
     )
 }
