@@ -12,6 +12,7 @@ function AuthProvider({ children }) {
     const [isAuth, setIsAuth] = useState(false);
     const [alert, setAlert] = useState({});
     const [isLoadingInfo, setIsLoadingInfo] = useState(true);
+    const [isShowingExpiredMsg, setIsShowingExpiredMsg] = useState(false);
 
     const router = useRouter();
 
@@ -50,6 +51,8 @@ function AuthProvider({ children }) {
             setUser(data);
             setIsAuth(true);
         } catch (error) {
+            if(isShowingExpiredMsg) return;
+            setIsShowingExpiredMsg(true);
             if(error?.response?.data?.status === 'expired'){
                 const result = await showDialogOption({ 
                     title: 'La sesión ha expirado', 
@@ -63,8 +66,9 @@ function AuthProvider({ children }) {
                 } else if(result.isDenied){
                     logOut();
                 }
+
+                setIsShowingExpiredMsg(false);
             }
-            console.log(error);
         } finally {
             setIsLoadingInfo(false);
         }
