@@ -10,7 +10,6 @@ function LinkCard({ link }) {
 
   const linkURL = `${process.env.NEXT_PUBLIC_WEB_URL}/download/${url}`;
 
-  
   return (
     <div className="border border-gray-700 p-4 rounded text-white font-medium flex flex-col gap-2 relative">
       <p className="t">{real_name}</p>
