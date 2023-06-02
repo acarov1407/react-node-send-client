@@ -49,7 +49,7 @@ function FormLogin() {
 
                         <button
                             type="submit"
-                            className="p-3 w-full action-button rounded-sm"
+                            className="p-3 w-full rounded bg-rose-500 text-white font-medium hover:bg-rose-600 transition-colors"
                             disabled={isSubmitting}
                         >
                             {isSubmitting ? <Spinner /> : 'Iniciar Sesión'}

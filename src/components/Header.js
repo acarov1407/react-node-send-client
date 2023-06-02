@@ -13,20 +13,24 @@ function Header() {
 
 
     return (
-        <header className="py-5 flex items-center justify-between bg-gray-900 shadow-lg border-b-4 border-gray-800 px-2 sm:px-0">
-            <div className="container mx-auto flex justify-between items-center">
-                <Link href="/">
-                    <Image width={400} height={200} src="/logo_dark.svg" alt="Logo NodeSend" className="w-48 sm:w-64" />
+        <header className="py-5 flex items-center justify-between bg-gray-900 shadow-lg border-b border-gray-800 px-2 sm:px-0">
+            <div className="container mx-auto flex flex-col md:flex-row md:justify-between items-center">
+                <Link
+                    href="/"
+                    className="flex items-center gap-5"
+                >
+                    <Image width={400} height={200} src="/react_node_send_logo.png" alt="Logo NodeSend" className="w-12 h-12" />
+                    <span className="text-rose-600 font-bold text-2xl uppercase flex gap-1.5">React<span className="text-white">Node</span>Send</span>
                 </Link>
                 {
 
                     isAuth
                         ?
                         (
-                            <div 
-                            className="relative"
-                            onMouseEnter={() => setOnMenu(true)}
-                            onMouseLeave={() => setOnMenu(false)}
+                            <div
+                                className="relative"
+                                onMouseEnter={() => setOnMenu(true)}
+                                onMouseLeave={() => setOnMenu(false)}
                             >
                                 <p
                                     className="text-white font-medium flex items-center gap-2 py-2 px-4 bg-gray-800 text-sm rounded cursor-pointer peer"
@@ -65,12 +69,21 @@ function Header() {
                         )
                         :
                         (
-                            <Link
-                                href="/login"
-                                className="action-button py-3 px-10 rounded"
-                            >
-                                Inicia Sesión
-                            </Link>
+                            <div className="mt-8 md:mt-0 md:flex items-center gap-3">
+                                <Link
+                                    href="/login"
+                                    className="py-3 px-10 rounded text-white font-medium hover:text-rose-300 transition-colors text-center"
+                                >
+                                    Inicia Sesión
+                                </Link>
+                                <Link
+                                    href="/register"
+                                    className="py-3 px-10 rounded block mt-6 md:mt-0 bg-rose-500 text-white font-medium hover:bg-rose-600 transition-colors text-center"
+                                >
+                                    Registrarse
+                                </Link>
+                            </div>
+
                         )
                 }
 

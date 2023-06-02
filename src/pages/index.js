@@ -6,9 +6,6 @@ import DropContainer from "@/components/DropContainer";
 import Alert from "@/components/Alert";
 
 
-
-
-
 function Home() {
 
   const { isAuth } = useAuth();
@@ -25,7 +22,13 @@ function Home() {
         <DropContainer />
         <div>
           <h2 className="text-4xl text-white font-sans font-medium">Comparte tus archivos de forma sencilla y segura</h2>
-          <p className="mt-5 text-white leading-loose"><span className="text-red-400 font-medium">ReactNodeSend </span>
+          <p className="mt-5 text-white leading-loose"><span className="text-rose-600 font-bold">
+            {` React`}
+            <span className="text-white">
+              {` Node`}
+            </span>
+            {` Send `}
+          </span>
             te permite compartir tus archivos de manera totalmente segura, rápida y sencilla. Una vez tu archivo es descargado, este es eliminado de nuestros servidores,
             por lo que puedes estar seguro de que solo tú decides quien tiene acceso a tus archivos.
           </p>
