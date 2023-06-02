@@ -47,6 +47,7 @@ function AppProvider({ children }) {
             uploadData.name = data.file;
             await createLink(uploadData);
         } catch (error) {
+            console.log(error)
             handleAlert({ error: true, msg: error.response.data.msg ?? 'Ha ocurrido un error al intentar subir el archivo' })
         } finally {
             setIsUploadingFile(false);
